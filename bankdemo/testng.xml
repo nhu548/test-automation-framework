@@ -1,0 +1,11 @@
+<suite name="Fintech API Suite">
+
+    <test name="Account API Test">
+
+        <classes>
+            <class name="com.nhu.bankdemo.tests.AccountAPITest"/>
+        </classes>
+
+    </test>
+
+</suite>
