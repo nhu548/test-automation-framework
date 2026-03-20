@@ -16,7 +16,7 @@ public class AccountAPITest extends BaseTest {
                 .contentType("application/json")
                 .body("{\"ownerName\":\"Tam\",\"balance\":1000}")
                 .when()
-                .post("/accounts")
+                .post("/api/accounts")
                 .then()
                 .statusCode(200)
                 .log().all();
@@ -29,7 +29,7 @@ public class AccountAPITest extends BaseTest {
         given()
                 .log().all()
                 .when()
-                .get("/accounts/1")
+                .get("/api/accounts/1")
                 .then()
                 .statusCode(200)
                 .log().all();
@@ -40,8 +40,9 @@ public class AccountAPITest extends BaseTest {
 
         given()
                 .when()
-                .get("/accounts")
+                .get("/api/accounts")
                 .then()
                 .statusCode(200);
     }
+
 }

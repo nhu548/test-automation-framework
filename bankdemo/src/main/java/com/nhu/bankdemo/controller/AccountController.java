@@ -1,40 +1,51 @@
 package com.nhu.bankdemo.controller;
-import com.nhu.bankdemo.service.AccountService;
+
 import com.nhu.bankdemo.entity.Account;
-import com.nhu.bankdemo.repository.AccountRepository;
+import com.nhu.bankdemo.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import com.nhu.bankdemo.dto.TransferRequest;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/api/accounts")
 @RequiredArgsConstructor
 public class AccountController {
 
-    private final AccountService accountService;
-    private final AccountRepository accountRepository;
+    private final AccountService service;
 
     @PostMapping
-    public Account createAccount(@RequestBody Account account) {
-        return accountRepository.save(account);
+    public Account create(@RequestBody Account acc){
+        return service.create(acc);
+    }
+
+    @GetMapping("/{id}")
+    public Account get(@PathVariable Long id){
+        return service.getById(id);
     }
 
     @GetMapping
-    public List<Account> getAllAccounts() {
-        return accountRepository.findAll();
+    public List<Account> getAll(){
+        return service.getAll();
     }
 
-    @PostMapping("/transfer")
-    public String transfer(@RequestBody TransferRequest request) {
-
-        accountService.transfer(
-                request.getFromId(),
-                request.getToId(),
-                request.getAmount()
-        );
-
-        return "Transfer successful";
-    }
+//    @PostMapping("/transfer")
+//    public String transfer(@RequestParam Long fromId,
+//                           @RequestParam Long toId,
+//                           @RequestParam Double amount){
+//        accountService.transfer(fromId, toId, amount);
+//        return "Transfer successful";
+//    }
+//
+//    @PostMapping("/deposit")
+//    public Account deposit(@RequestParam Long id,
+//                           @RequestParam Double amount){
+//        return accountService.deposit(id, amount);
+//    }
+//
+//    @PostMapping("/withdraw")
+//    public Account withdraw(@RequestParam Long id,
+//                            @RequestParam Double amount){
+//        return accountService.withdraw(id, amount);
+//    }
 }

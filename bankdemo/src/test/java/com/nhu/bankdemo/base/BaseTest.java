@@ -21,7 +21,6 @@ public class BaseTest {
 
         given()
                 .post("/test/reset-database");
-
         System.out.println("Database reset");
     }
 }
