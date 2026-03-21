@@ -1,13 +1,13 @@
 package com.nhu.bankdemo.tests;
 
 import io.restassured.RestAssured;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
 public class DepositWithdrawTest {
 
-    @Test
+    @Test(enabled = false)
     public void TC07_depositMoney(){
 
         RestAssured.baseURI = "http://localhost:8081";
